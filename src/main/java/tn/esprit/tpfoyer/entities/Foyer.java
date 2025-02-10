@@ -1,10 +1,9 @@
 package tn.esprit.tpfoyer.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,4 +18,9 @@ public class Foyer {
     String nomFoyer;
     Long capaciteFoyer;
 
+    @OneToOne(mappedBy = "foyer")
+    Universite universite;
+
+    @OneToMany(mappedBy = "foyer")
+    List<Bloc> blocs;
 }

@@ -1,12 +1,10 @@
 package tn.esprit.tpfoyer.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,5 +21,8 @@ public class Etudiant {
     Long cin;
     String ecole;
     Date dateNaissance;
+
+    @ManyToMany(mappedBy = "etudiants")
+    List<Reservation> reservations;
 
 }
