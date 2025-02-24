@@ -24,5 +24,35 @@ public class Reservation {
     @ManyToMany
     List<Etudiant> etudiants;
 
+    public String getIdReservation() {
+        return idReservation;
+    }
 
+    public Date getAnneeUniversitaire() {
+        return anneeUniversitaire;
+    }
+
+    public Boolean getEstValide() {
+        return estValide;
+    }
+
+    public List<Etudiant> getEtudiants() {
+        return etudiants;
+    }
+
+    public void setIdReservation(String idReservation) {
+        this.idReservation = idReservation;
+    }
+
+    public void setAnneeUniversitaire(Date anneeUniversitaire) {
+        this.anneeUniversitaire = anneeUniversitaire;
+    }
+
+    public void setEstValide(Boolean estValide) {
+        this.estValide = estValide;
+    }
+
+    public void setEtudiants(List<Etudiant> etudiants) {
+        this.etudiants = etudiants;
+    }
 }
