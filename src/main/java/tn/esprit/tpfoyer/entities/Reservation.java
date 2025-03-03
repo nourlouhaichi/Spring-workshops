@@ -40,19 +40,4 @@ public class Reservation {
         return etudiants;
     }
 
-    public void setIdReservation(String idReservation) {
-        this.idReservation = idReservation;
-    }
-
-    public void setAnneeUniversitaire(Date anneeUniversitaire) {
-        this.anneeUniversitaire = anneeUniversitaire;
-    }
-
-    public void setEstValide(Boolean estValide) {
-        this.estValide = estValide;
-    }
-
-    public void setEtudiants(List<Etudiant> etudiants) {
-        this.etudiants = etudiants;
-    }
 }
