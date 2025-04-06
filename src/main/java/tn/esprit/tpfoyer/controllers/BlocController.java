@@ -37,4 +37,20 @@ public class BlocController {
     void deleteBloc(@PathVariable long id){
         blocService.deleteBloc(id);
     }
+
+
+    @PutMapping("/assignBlocToFoyer/{idBloc}/{idFoyer}")
+    public Bloc assignBlocToFoyer(@PathVariable Long idBloc, @PathVariable Long idFoyer) {
+        return blocService.assignBlocToFoyer(idBloc, idFoyer);
+    }
+
+    @PostMapping("/addBlocAndAssignToFoyer/{idFoyer}")
+    public Bloc addBlocAndAssignToFoyer(@RequestBody Bloc bloc, @PathVariable Long idFoyer) {
+        return blocService.addBlocAndAssignToFoyer(bloc, idFoyer);
+    }
+
+    @PutMapping("/desaffecterBlocFromFoyer/{idBloc}")
+    public Bloc desaffecterBlocFromFoyer(@PathVariable Long idBloc) {
+        return blocService.desaffecterBlocFromFoyer(idBloc);
+    }
 }

@@ -1,9 +1,6 @@
 package tn.esprit.tpfoyer.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -21,23 +18,7 @@ public class Reservation {
     Date anneeUniversitaire;
     Boolean estValide;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<Etudiant> etudiants;
-
-    public String getIdReservation() {
-        return idReservation;
-    }
-
-    public Date getAnneeUniversitaire() {
-        return anneeUniversitaire;
-    }
-
-    public Boolean getEstValide() {
-        return estValide;
-    }
-
-    public List<Etudiant> getEtudiants() {
-        return etudiants;
-    }
 
 }

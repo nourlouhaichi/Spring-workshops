@@ -38,4 +38,20 @@ public class ReservationController {
     void deleteReservation(@PathVariable String id){
         reservationService.deleteReservation(id);
     }
+
+
+    @PutMapping("/assignEtudiantToReservation/{idReservation}/{idEtudiant}")
+    Reservation assignEtudiantToReservation(@PathVariable String idReservation, @PathVariable Long idEtudiant) {
+        return reservationService.assignEtudiantToReservation(idReservation,idEtudiant);
+    }
+
+    @PutMapping("/assignEtudiantsToReservation/{idReservation}")
+    public Reservation affectEtudiantsToReservation(@PathVariable String idReservation, @RequestBody List<Long> idEtudiant) {
+        return reservationService.assignEtudiantsToReservation(idReservation, idEtudiant);
+    }
+
+    @PutMapping("desaffecterEtudiantFromReservation/{idReservation}/{idEtudiant}")
+    public void desaffecterEtudianttFromReservation(@PathVariable String idReservation, @PathVariable Long idEtudiant) {
+        reservationService.desaffecterEtudiantFromReservation(idReservation,idEtudiant);
+    }
 }

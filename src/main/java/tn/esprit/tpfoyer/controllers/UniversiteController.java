@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/universite")
 public class UniversiteController {
+
     @Autowired
     IUniversiteService universiteService;
 
@@ -40,4 +41,27 @@ public class UniversiteController {
     void deleteUniversite(@PathVariable long id){
         universiteService.deleteUniversite(id);
     }
+
+
+    @PostMapping("/addUniversiteAndFoyer")
+    public Universite addUniversiteAndFoyer(@RequestBody Universite universite) {
+        return universiteService.addUniversiteAndFoyerAndAssign(universite);
+    }
+
+    @PutMapping("/assignFoyerToUniversite/{idUniversite}/{idFoyer}")
+    public Universite assignFoyerToUniversite(@PathVariable Long idUniversite, @PathVariable Long idFoyer) {
+        return universiteService.assignFoyerToUniversite(idUniversite, idFoyer);
+    }
+
+    @PostMapping("/addUniversiteAndAssignFoyer/{idFoyer}")
+    public Universite addUniversiteAndAssignFoyer(@RequestBody Universite universite, @PathVariable Long idFoyer) {
+        return universiteService.addUniversiteAndAssignUniversiteToFoyer(universite, idFoyer);
+    }
+
+    @PutMapping("/desaffecterFoyerFromUniversite/{idUniversite}")
+    public Universite desaffecterFoyerFromUniversite(@PathVariable Long idUniversite) {
+        return universiteService.DesaffecterFoyerFromUniversite(idUniversite);
+    }
+
+
 }

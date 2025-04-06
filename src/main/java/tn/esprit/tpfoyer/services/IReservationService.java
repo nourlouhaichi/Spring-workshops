@@ -10,4 +10,11 @@ public interface IReservationService {
     void deleteReservation(String id);
     List<Reservation> retreiveAllReservations();
     Reservation retreiveReservation(String id);
+
+
+    public Reservation assignEtudiantToReservation(String idReservation, Long idEtudiant);
+    public Reservation assignEtudiantsToReservation(String idReservation, List<Long> idEtudiant);
+    public void desaffecterEtudiantFromReservation(String idReservation, Long idEtudiant);
+
+
 }

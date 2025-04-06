@@ -10,4 +10,13 @@ public interface IUniversiteService {
     void deleteUniversite(long id);
     List<Universite> retreiveAllUniversites();
     Universite retreiveUniversite(long id);
+
+
+    public Universite addUniversiteAndFoyerAndAssign(Universite universite);
+    public Universite assignFoyerToUniversite(Long idUniversite, Long idFoyer);
+    public Universite addUniversiteAndAssignUniversiteToFoyer(Universite universite,Long idFoyer);
+    public Universite DesaffecterFoyerFromUniversite(Long idUniversite);
+
+
+
 }

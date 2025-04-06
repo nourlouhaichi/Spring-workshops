@@ -10,4 +10,9 @@ public interface IBlocService {
     void deleteBloc(long id);
     List<Bloc> retreiveAllBlocs();
     Bloc retreiveBloc(long id);
+
+
+    Bloc assignBlocToFoyer(Long idBloc, Long idFoyer);
+    Bloc addBlocAndAssignToFoyer(Bloc bloc, Long idFoyer);
+    Bloc desaffecterBlocFromFoyer(Long idBloc);
 }

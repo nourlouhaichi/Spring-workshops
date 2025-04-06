@@ -17,7 +17,7 @@ public class Universite {
     String nomUniversite;
     String adresse;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     Foyer foyer;
 
 }

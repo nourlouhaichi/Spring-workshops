@@ -19,10 +19,11 @@ public class Chambre {
     @Enumerated(EnumType.STRING)
     TypeChambre typeChambre;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Bloc bloc;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     List<Reservation> reservations;
+
 
 }

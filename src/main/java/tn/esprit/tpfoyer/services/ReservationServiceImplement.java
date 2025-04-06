@@ -2,8 +2,10 @@ package tn.esprit.tpfoyer.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.tpfoyer.entities.Etudiant;
 import tn.esprit.tpfoyer.entities.Reservation;
 import tn.esprit.tpfoyer.repository.ChambreRepository;
+import tn.esprit.tpfoyer.repository.EtudiantRepository;
 import tn.esprit.tpfoyer.repository.ReservationRepository;
 
 import java.util.List;
@@ -13,6 +15,9 @@ public class ReservationServiceImplement implements IReservationService {
 
     @Autowired
     ReservationRepository reservationRepository;
+
+    @Autowired
+    EtudiantRepository etudiantRepository;
 
     @Override
     public Reservation addReservation(Reservation reservation) {
@@ -37,5 +42,31 @@ public class ReservationServiceImplement implements IReservationService {
     @Override
     public Reservation retreiveReservation(String id) {
         return reservationRepository.findById(id).get();
+    }
+
+
+
+    @Override
+    public Reservation assignEtudiantToReservation(String idReservation, Long idEtudiant) {
+        Etudiant etudiant = etudiantRepository.findById(idEtudiant).get();
+        Reservation reservation = reservationRepository.findById(idReservation).get();
+        reservation.getEtudiants().add(etudiant);
+        return reservationRepository.save(reservation);
+    }
+
+    @Override
+    public Reservation assignEtudiantsToReservation(String idReservation, List<Long> idEtudiant) {
+        List<Etudiant> etudiants = etudiantRepository.findAllById(idEtudiant);
+        Reservation reservation = reservationRepository.findById(idReservation).get();
+        reservation.getEtudiants().addAll(etudiants);
+        return reservationRepository.save(reservation);
+    }
+
+    @Override
+    public void desaffecterEtudiantFromReservation(String idReservation, Long idEtudiant) {
+        Etudiant etudiant = etudiantRepository.findById(idEtudiant).get();
+        Reservation reservation = reservationRepository.findById(idReservation).get();
+        reservation.getEtudiants().remove(etudiant);
+        reservationRepository.save(reservation);
     }
 }

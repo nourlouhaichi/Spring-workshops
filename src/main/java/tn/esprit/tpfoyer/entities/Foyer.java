@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +20,8 @@ public class Foyer {
     Long capaciteFoyer;
 
     @OneToOne(mappedBy = "foyer")
+    @ToString.Exclude
+    @JsonIgnore
     Universite universite;
 
     @OneToMany(mappedBy = "foyer")
