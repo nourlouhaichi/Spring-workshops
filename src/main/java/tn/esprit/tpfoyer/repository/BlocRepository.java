@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface BlocRepository extends JpaRepository<Bloc, Long> {
     List<Bloc> findAllByFoyerIsNull();
-    List<Bloc> findAllByCapaciteBlocGreaterThan(long capacite);
+    List<Bloc> findAllByCapaciteBlocGreaterThan(Long capaciteBloc);
 }

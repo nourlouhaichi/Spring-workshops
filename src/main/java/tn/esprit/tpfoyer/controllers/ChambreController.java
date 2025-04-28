@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entities.Chambre;
 import tn.esprit.tpfoyer.entities.Reservation;
+import tn.esprit.tpfoyer.entities.TypeChambre;
+import tn.esprit.tpfoyer.repository.ChambreRepository;
 import tn.esprit.tpfoyer.services.IChambreService;
 
 import java.util.List;
@@ -14,6 +16,8 @@ public class ChambreController {
 
     @Autowired
     IChambreService chambreService;
+    @Autowired
+    ChambreRepository chambreSRepository;
 
     @PostMapping("/addChambre")
     Chambre addChambre(@RequestBody Chambre chambre) {
@@ -70,5 +74,19 @@ public class ChambreController {
     @PutMapping("/removeReservationFromChambre/{idReservation}/{idChambre}")
     public Chambre removeReservationFromChambre(@PathVariable String idReservation, @PathVariable Long idChambre) {
         return chambreService.removeReservationFromChambre(idReservation, idChambre);
+    }
+
+    @GetMapping("/retrieveChambreByTypeChambre/{typeChambre}")
+    public List<Chambre> findAllByTypeChambre(@PathVariable("typeChambre") TypeChambre typeChambre){
+        return chambreSRepository.findAllByTypeChambre(typeChambre);
+    }
+    @GetMapping("/retrieveChambreByNumeroChambre/{numC}")
+    public Chambre findChambreByNumeroChambre(@PathVariable("numC") long numC){
+        return chambreSRepository.findChambreByNumeroChambre(numC);
+    }
+
+    @GetMapping("/etudiant/{cin}")
+    public Chambre getChambreByEtudiantCin(@PathVariable long cin) {
+      return chambreService.getChambreByEtudiantCin(cin);
     }
 }

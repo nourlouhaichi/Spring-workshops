@@ -22,5 +22,7 @@ public interface IChambreService {
     Chambre addReservationAndAssignToChambre(Reservation reservation, Long idChambre);
     Chambre removeReservationFromChambre(String idReservation, Long idChambre);
 
+    public Chambre getChambreByEtudiantCin(Long cin);
+
 
 }

@@ -100,4 +100,9 @@ public class ChambreServiceImplement implements IChambreService {
         chambre.setReservations(null);
         return chambreRepository.save(chambre);
     }
+
+    @Override
+    public Chambre getChambreByEtudiantCin(Long cin) {
+        return chambreRepository.findChambreByEtudiantCinAndReservationValide(cin);
+    }
 }
